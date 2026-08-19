@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Memories</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    color: white;
+    font-family: Inter, sans-serif;
+    padding: 45px 18px;
+
+    background:
+        radial-gradient(circle at 15% 15%, rgba(99,102,241,.2), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(56,189,248,.12), transparent 30%),
+        linear-gradient(135deg, #050505, #0b0b10, #11131a);
+
+    overflow-x: hidden;
+}
+
+/* LIGHT EFFECT */
+body::after {
+    content: "";
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    top: -150px;
+    right: -120px;
+    background: #6366f1;
+    filter: blur(180px);
+    opacity: .12;
+    z-index: -1;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    max-width: 700px;
+    margin: auto;
+}
+
+.small-title {
+    color: #a1a1aa;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(48px, 10vw, 80px);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 18px;
+}
+
+.description {
+    color: #a1a1aa;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* GALERI */
+.gallery {
+    max-width: 1050px;
+    margin: 55px auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    border-radius: 22px;
+    padding: 7px;
+
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(15px);
+
+    transition: .5s;
+}
+
+.card:nth-child(2) {
+    transform: translateY(35px);
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 30px 80px rgba(0,0,0,.5);
+}
+
+.card:nth-child(2):hover {
+    transform: translateY(27px) scale(1.02);
+}
+
+.card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+
+    border-radius: 17px;
+
+    transition: .7s;
+}
+
+.card:hover img {
+    transform: scale(1.06);
+}
+
+/* GRADIENT FOTO */
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 7px;
+
+    border-radius: 17px;
+
+    background: linear-gradient(
+        transparent 55%,
+        rgba(0,0,0,.8)
+    );
+
+    pointer-events: none;
+}
+
+/* JUDUL FOTO */
+.card-info {
+    position: absolute;
+    z-index: 2;
+
+    bottom: 22px;
+    left: 22px;
+}
+
+.card-info h2 {
+    font-family: "DM Serif Display", serif;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.card-info p {
+    color: #d4d4d8;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+/* STYLE SECTION PILIH ADMIN DENGAN KOTAK BESAR LUAR */
+.admin-section {
+    max-width: 1050px;
+    margin: 80px auto;
+    
+    /* KOTAK PEMBUNGKUS UTAMA */
+    background: rgba(16, 26, 66, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    padding: 40px 30px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.section-tag {
+    color: #3bf19b;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.admin-title {
+    font-family: "DM Serif Display", serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.admin-subtitle {
+    color: #8c9bba;
+    font-size: 14px;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.admin-card {
+    background-color: rgba(16, 26, 66, 0.8);
+    border: 1px solid #1c2b66;
+    border-radius: 18px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-4px);
+    border-color: #3bf19b;
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    background-color: #17285c;
+    color: #38bdf8;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+}
+
+.admin-details h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 3px;
+}
+
+.admin-details .role {
+    font-size: 12px;
+    color: #8c9bba;
+    margin-bottom: 8px;
+}
+
+.status-tag {
+    display: inline-block;
+    background-color: #162a4a;
+    color: #38bdf8;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.btn-chat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: #3bf19b;
+    color: #080d26;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px;
+    border-radius: 12px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-chat:hover {
+    background-color: #32d688;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    background-color: #080d26;
+    border-radius: 50%;
+}
+
+/* POPUP */
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.85);
+    backdrop-filter: blur(15px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 100;
+}
+
+.popup-box {
+    width: 100%;
+    max-width: 600px;
+    background: #111116;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 25px;
+    padding: 10px;
+    box-shadow: 0 40px 100px rgba(0,0,0,.7);
+    animation: muncul .4s ease;
+}
+
+.popup-box img {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.popup-box h2 {
+    font-family: "DM Serif Display", serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin: 20px 18px 8px;
+}
+
+.popup-box p {
+    color: #a1a1aa;
+    line-height: 1.7;
+    margin: 0 18px 20px;
+}
+
+.close {
+    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(255,255,255,.08);
+    color: white;
+    padding: 10px 22px;
+    margin: 0 18px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.close:hover {
+    background: white;
+    color: black;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    color: #71717a;
+    font-size: 12px;
+    margin-top: 70px;
+}
+
+/* ANIMASI */
+@keyframes muncul {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width: 700px) {
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    .card:nth-child(2) {
+        transform: translateY(20px);
+    }
+    .card img {
+        height: 260px;
+    }
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+    .admin-section {
+        padding: 25px 18px;
+    }
+}
+
+@media(max-width: 450px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+    .card:nth-child(2) {
+        transform: none;
+    }
+    .card:nth-child(2):hover {
+        transform: translateY(-8px) scale(1.02);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="small-title">Our Memory on Smk pgri 2</div>
+    <h1>Kenang-Kenangan In gocir</h1>
+    <p class="description">
+        Beberapa momen sederhana yang akhirnya menjadi cerita yang tidak akan pernah terlupakan.
+    </p>
+</div>
+
+<!-- GALERI -->
+<div class="gallery">
+    <!-- FOTO 1 -->
+    <div class="card" onclick="showMemory('Momen Pertama', 'IMG-20240925-WA0071.jpg', 'ini adalah foto pertama kali di smk pgri 2 cibinong dengan teman kelas 10-tkj 5 damar.wikend.fahri.dan alfian.')">
+        <img src="IMG-20240925-WA0071.jpg">
+        <div class="card-info">
+            <h2>Momen Pertama</h2>
+            <p>Our first memory</p>
+        </div>
+    </div>
+
+    <!-- FOTO 2 -->
+    <div class="card" onclick="showMemory('Bukber dikelas 11', 'IMG-20260228-WA0181.jpg', 'Foto dimana kelas kita berkumpul dibulan Puasa untuk berbuka bersama.disitu kita mengobrol bersama ngomongin tempat pkl masing masing dan lainnya.')">
+        <img src="IMG-20260228-WA0181.jpg">
+        <div class="card-info">
+            <h2>Bukber dikelas 11</h2>
+            <p>A beautiful day</p>
+        </div>
+    </div>
+
+    <!-- FOTO 3 -->
+    <div class="card" onclick="showMemory('Momen Bersama', 'IMG-20260603-WA0010.jpg', 'foto bersama terakhir dikelas 11 setelah tes pelajaran jasmani .lopyu.')">
+        <img src="IMG-20260603-WA0010.jpg">
+        <div class="card-info">
+            <h2>Momen Bersama</h2>
+            <p>Forever remembered</p>
+        </div>
+    </div>
+
+    <!-- FOTO 4 -->
+    <div class="card" onclick="showMemory('Cerita Kita', 'IMG-20250829-WA0067.jpg', 'Foto Bersama ex wali kelas dikelas 11 tkj 6.')">
+        <img src="IMG-20250829-WA0067.jpg">
+        <div class="card-info">
+            <h2>Cerita Kita</h2>
+            <p>A story to remember</p>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION PILIH ADMIN DENGAN KOTAK LUAR -->
+<div class="admin-section">
+    <div class="section-tag">KONTAK SEKARANG</div>
+    <h2 class="admin-title">Pilih Admin</h2>
+    <p class="admin-subtitle">Pilih admin terpercaya untuk kebutuhan jual beli dan layanan digital yang sesuai.</p>
+
+    <div class="admin-grid">
+        <!-- ADMIN 1 -->
+        <div class="admin-card">
+            <div class="admin-profile">
+                <div class="avatar">A</div>
+                <div class="admin-details">
+                    <h3>FOUNDER WEB Alfian</h3>
+                    <div class="role">Engginer GOCIR</div>
+                    <span class="status-tag">Tersedia</span>
+                </div>
+            </div>
+            <a href="https://www.instagram.com/alpiangabut?igsh=MTh3em5zZ2JqYXBueg==" target="_blank" class="btn-chat">
+                <span class="dot"></span> Chat Admin ↗
+            </a>
+        </div>
+
+        <!-- ADMIN 2 -->
+        <div class="admin-card">
+            <div class="admin-profile">
+                <div class="avatar">D</div>
+                <div class="admin-details">
+                    <h3>Ceo WIKEND</h3>
+                    <div class="role">Engginer GOCIR</div>
+                    <span class="status-tag">Tersedia</span>
+                </div>
+            </div>
+            <a href="https://www.instagram.com/_wikend.gst?igsh=ZG95a2Z0eGF1b3U1" target="_blank" class="btn-chat">
+                <span class="dot"></span> Chat Admin ↗
+            </a>
+        </div>
+
+        <!-- ADMIN 3 -->
+        <div class="admin-card">
+            <div class="admin-profile">
+                <div class="avatar">F</div>
+                <div class="admin-details">
+                    <h3>Admin Fahri</h3>
+                    <div class="role">Engginer GOCIR</div>
+                    <span class="status-tag">Tersedia</span>
+                </div>
+            </div>
+            <a href="https://www.instagram.com/mhmmadfhrisaymeong_?igsh=M3hvbDN4NWUzM2g1" target="_blank" class="btn-chat">
+                <span class="dot"></span> Chat Admin ↗
+            </a>
+        </div>
+
+        <!-- ADMIN 4 -->
+        <div class="admin-card">
+            <div class="admin-profile">
+                <div class="avatar">W</div>
+                <div class="admin-details">
+                    <h3>Staff Dhevan</h3>
+                    <div class="role">Engginer GOCIR</div>
+                    <span class="status-tag">Tersedia</span>
+                </div>
+            </div>
+            <a href="https://www.instagram.com/the.vans._?igsh=MW5heGt6bzZnaGprNw==" target="_blank" class="btn-chat">
+                <span class="dot"></span> Chat Admin ↗
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+    <div class="popup-box">
+        <img id="memoryImage">
+        <h2 id="memoryTitle"></h2>
+        <p id="memoryText"></p>
+        <button class="close" onclick="closeMemory()">Tutup</button>
+    </div>
+</div>
+
+<footer>
+    Made with memories ♡
+</footer>
+
+<script>
+function showMemory(title, image, text) {
+    document.getElementById("memoryTitle").innerText = title;
+    document.getElementById("memoryImage").src = image;
+    document.getElementById("memoryText").innerText = text;
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closeMemory() {
+    document.getElementById("popup").style.display = "none";
+}
+
+document.getElementById("popup").addEventListener("click", function(e) {
+    if (e.target === this) {
+        closeMemory();
+    }
+});
+</script>
+
+</body>
+</html>
