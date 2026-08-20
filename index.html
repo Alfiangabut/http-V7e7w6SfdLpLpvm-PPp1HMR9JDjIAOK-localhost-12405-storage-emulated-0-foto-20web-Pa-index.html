@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Our Memories</title>
 
 <style>
@@ -20,27 +19,11 @@ body {
     color: white;
     font-family: Inter, sans-serif;
     padding: 45px 18px;
-
     background:
         radial-gradient(circle at 15% 15%, rgba(99,102,241,.2), transparent 30%),
         radial-gradient(circle at 85% 80%, rgba(56,189,248,.12), transparent 30%),
         linear-gradient(135deg, #050505, #0b0b10, #11131a);
-
     overflow-x: hidden;
-}
-
-/* LIGHT EFFECT */
-body::after {
-    content: "";
-    position: fixed;
-    width: 400px;
-    height: 400px;
-    top: -150px;
-    right: -120px;
-    background: #6366f1;
-    filter: blur(180px);
-    opacity: .12;
-    z-index: -1;
 }
 
 /* HEADER */
@@ -76,7 +59,6 @@ h1 {
 .gallery {
     max-width: 1050px;
     margin: 55px auto;
-
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 18px;
@@ -86,20 +68,12 @@ h1 {
     position: relative;
     overflow: hidden;
     cursor: pointer;
-
     border-radius: 22px;
     padding: 7px;
-
     background: rgba(255,255,255,.05);
     border: 1px solid rgba(255,255,255,.12);
-
     backdrop-filter: blur(15px);
-
     transition: .5s;
-}
-
-.card:nth-child(2) {
-    transform: translateY(35px);
 }
 
 .card:hover {
@@ -107,46 +81,18 @@ h1 {
     box-shadow: 0 30px 80px rgba(0,0,0,.5);
 }
 
-.card:nth-child(2):hover {
-    transform: translateY(27px) scale(1.02);
-}
-
 .card img {
     width: 100%;
     height: 350px;
     object-fit: cover;
     display: block;
-
     border-radius: 17px;
-
     transition: .7s;
 }
 
-.card:hover img {
-    transform: scale(1.06);
-}
-
-/* GRADIENT FOTO */
-.card::after {
-    content: "";
-    position: absolute;
-    inset: 7px;
-
-    border-radius: 17px;
-
-    background: linear-gradient(
-        transparent 55%,
-        rgba(0,0,0,.8)
-    );
-
-    pointer-events: none;
-}
-
-/* JUDUL FOTO */
 .card-info {
     position: absolute;
     z-index: 2;
-
     bottom: 22px;
     left: 22px;
 }
@@ -163,135 +109,21 @@ h1 {
     margin-top: 4px;
 }
 
-/* STYLE SECTION PILIH ADMIN DENGAN KOTAK BESAR LUAR */
-.admin-section {
-    max-width: 1050px;
-    margin: 80px auto;
-    
-    /* KOTAK PEMBUNGKUS UTAMA */
-    background: rgba(16, 26, 66, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 28px;
-    padding: 40px 30px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-}
-
-.section-tag {
-    color: #3bf19b;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-}
-
-.admin-title {
-    font-family: "DM Serif Display", serif;
-    font-size: 36px;
-    font-weight: 400;
-    margin-bottom: 12px;
-    color: #ffffff;
-}
-
-.admin-subtitle {
-    color: #8c9bba;
+/* POPUP LIRIK BERJALAN */
+.lirik-line {
+    color: #52525b;
     font-size: 14px;
-    margin-bottom: 35px;
-    line-height: 1.6;
-}
-
-.admin-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.admin-card {
-    background-color: rgba(16, 26, 66, 0.8);
-    border: 1px solid #1c2b66;
-    border-radius: 18px;
-    padding: 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.admin-card:hover {
-    transform: translateY(-4px);
-    border-color: #3bf19b;
-}
-
-.admin-profile {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.avatar {
-    width: 48px;
-    height: 48px;
-    background-color: #17285c;
-    color: #38bdf8;
-    font-size: 18px;
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-}
-
-.admin-details h3 {
-    font-size: 17px;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 3px;
-}
-
-.admin-details .role {
-    font-size: 12px;
-    color: #8c9bba;
-    margin-bottom: 8px;
-}
-
-.status-tag {
-    display: inline-block;
-    background-color: #162a4a;
-    color: #38bdf8;
-    font-size: 11px;
     font-weight: 500;
-    padding: 4px 10px;
-    border-radius: 6px;
+    transition: all 0.3s ease;
 }
 
-.btn-chat {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    background-color: #3bf19b;
-    color: #080d26;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 12px;
-    border-radius: 12px;
-    transition: background-color 0.2s ease;
+.lirik-line.active {
+    color: #3bf19b;
+    font-size: 17px;
+    font-weight: 700;
 }
 
-.btn-chat:hover {
-    background-color: #32d688;
-}
-
-.dot {
-    width: 7px;
-    height: 7px;
-    background-color: #080d26;
-    border-radius: 50%;
-}
-
-/* POPUP */
+/* POPUP FOTO & LIRIK */
 .popup {
     display: none;
     position: fixed;
@@ -301,38 +133,26 @@ h1 {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    z-index: 100;
+    z-index: 9999;
 }
 
 .popup-box {
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     background: #111116;
     border: 1px solid rgba(255,255,255,.15);
     border-radius: 25px;
-    padding: 10px;
+    padding: 20px;
     box-shadow: 0 40px 100px rgba(0,0,0,.7);
-    animation: muncul .4s ease;
+    text-align: center;
+    position: relative;
 }
 
 .popup-box img {
     width: 100%;
-    max-height: 60vh;
+    max-height: 50vh;
     object-fit: cover;
     border-radius: 18px;
-}
-
-.popup-box h2 {
-    font-family: "DM Serif Display", serif;
-    font-size: 32px;
-    font-weight: 400;
-    margin: 20px 18px 8px;
-}
-
-.popup-box p {
-    color: #a1a1aa;
-    line-height: 1.7;
-    margin: 0 18px 20px;
 }
 
 .close {
@@ -340,100 +160,245 @@ h1 {
     background: rgba(255,255,255,.08);
     color: white;
     padding: 10px 22px;
-    margin: 0 18px 20px;
+    margin-top: 15px;
     border-radius: 100px;
     cursor: pointer;
+    width: 100%;
 }
 
-.close:hover {
-    background: white;
-    color: black;
+/* SECTION PILIH ADMIN */
+.admin-section {
+    max-width: 1050px;
+    margin: 60px auto 30px auto;
 }
 
-/* FOOTER */
+.section-tag {
+    color: #3bf19b;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.admin-title {
+    font-family: "DM Serif Display", serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 6px;
+}
+
+.admin-subtitle {
+    color: #a1a1aa;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.admin-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 18px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(59, 241, 155, 0.4);
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #3bf19b, #2563eb);
+    color: #000;
+    font-weight: 700;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.admin-details h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.admin-details .role {
+    font-size: 11px;
+    color: #a1a1aa;
+    margin-top: 2px;
+}
+
+.status-tag {
+    display: inline-block;
+    font-size: 10px;
+    color: #3bf19b;
+    background: rgba(59, 241, 155, 0.1);
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-top: 5px;
+}
+
+.btn-chat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+}
+
+.btn-chat:hover {
+    background: #3bf19b;
+    color: #000;
+}
+
+.btn-chat .dot {
+    width: 6px;
+    height: 6px;
+    background-color: #3bf19b;
+    border-radius: 50%;
+}
+
+.btn-chat:hover .dot {
+    background-color: #000;
+}
+
 footer {
     text-align: center;
-    color: #71717a;
+    color: #a1a1aa;
     font-size: 12px;
-    margin-top: 70px;
+    margin-top: 40px;
+    padding-bottom: 20px;
 }
 
-/* ANIMASI */
-@keyframes muncul {
-    from {
-        opacity: 0;
-        transform: translateY(30px) scale(.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* RESPONSIVE */
 @media(max-width: 700px) {
-    .gallery {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
-    .card:nth-child(2) {
-        transform: translateY(20px);
-    }
-    .card img {
-        height: 260px;
-    }
-    .admin-grid {
-        grid-template-columns: 1fr;
-    }
-    .admin-section {
-        padding: 25px 18px;
-    }
-}
-
-@media(max-width: 450px) {
-    .gallery {
-        grid-template-columns: 1fr;
-    }
-    .card:nth-child(2) {
-        transform: none;
-    }
-    .card:nth-child(2):hover {
-        transform: translateY(-8px) scale(1.02);
-    }
+    .gallery { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 
 <body>
-    <!-- AUDIO DENGAN FOTO -->
+
+<!-- PEMUTAR MUSIK CONTAINER -->
 <div style="
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 15px; 
-    max-width: 400px; 
-    margin: 0 auto 30px auto; 
-    padding: 12px; 
+    max-width: 480px; 
+    margin: 0 auto 35px auto; 
+    padding: 14px 18px; 
     background: rgba(255, 255, 255, 0.05); 
     border: 1px solid rgba(255, 255, 255, 0.12); 
     border-radius: 20px; 
     backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 ">
-    <!-- FOTO SAMPING LAGU -->
-    <img src="SpotiDown.App - Shape of My Heart - Backstreet Boys.jpeg" alt="Cover Lagu" style="
-        width: 60px; 
-        height: 60px; 
-        border-radius: 12px; 
-        object-fit: cover;
-    ">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
+        <img src="SpotiDown.App - Shape of My Heart - Backstreet Boys.jpeg" style="width: 50px; height: 50px; border-radius: 12px; object-fit: cover; cursor: pointer;" onclick="openLirik()">
+        
+        <div style="flex-grow: 1;">
+            <h4 onclick="openLirik()" style="
+                font-size: 15px; 
+                font-weight: 600; 
+                color: #fff; 
+                margin: 0; 
+                cursor: pointer; 
+                display: inline-block;
+                text-decoration: underline;
+                text-decoration-color: rgba(59, 241, 155, 0.5);
+                text-underline-offset: 3px;
+            ">
+                Shape of My Heart 📜
+            </h4>
+            <p style="font-size: 11px; color: #a1a1aa; margin-top: 3px;">Backstreet Boys • Klik untuk lirik</p>
+        </div>
+    </div>
 
-    <!-- PEMUTAR AUDIO -->
-    <audio controls autoplay loop style="height: 40px; width: 100%;">
+    <audio id="myAudio" controls autoplay loop style="width: 100%; height: 36px;">
         <source src="SpotiDown.App - Shape of My Heart - Backstreet Boys.mp3" type="audio/mpeg">
-        Browser kamu tidak mendukung pemutar audio.
     </audio>
 </div>
 
+<!-- POPUP KOTAK LIRIK BERJALAN LENGKAP -->
+<div id="popupLirik" class="popup">
+    <div class="popup-box" style="max-height: 75vh; display: flex; flex-direction: column;">
+        <h3 style="font-family: 'DM Serif Display', serif; font-size: 24px; color: #fff; margin-bottom: 2px;">Shape of My Heart</h3>
+        <p style="color: #3bf19b; font-size: 13px; margin-bottom: 15px;">Backstreet Boys</p>
+
+        <div id="lirikContainer" style="display: flex; flex-direction: column; gap: 12px; overflow-y: auto; padding-right: 5px; flex-grow: 1;">
+            <p class="lirik-line" data-time="7">Yeah, yeah</p>
+            <p class="lirik-line" data-time="10">Baby, please try to forgive me</p>
+            <p class="lirik-line" data-time="20">Stay here, don't put out the glow</p>
+            <p class="lirik-line" data-time="28">Hold me now, don't bother</p>
+            <p class="lirik-line" data-time="33">If every minute it makes me weaker</p>
+            <p class="lirik-line" data-time="39">You can save me from the man that I've become, oh yeah</p>
+
+            <p class="lirik-line" data-time="49">Looking back on the things I'done</p>
+            <p class="lirik-line" data-time="54">I was trying to be someone</p>
+            <p class="lirik-line" data-time="59">I played my part, kept you in the dark</p>
+            <p class="lirik-line" data-time="64">Now let me show you the shape of my heart</p>
+
+            <p class="lirik-line" data-time="73">Sadness is beautiful, loneliness that's tragical</p>
+            <p class="lirik-line" data-time="82">So help me, I can't win this war, oh no</p>
+            <p class="lirik-line" data-time="93">Touch me now, don't bother</p>
+            <p class="lirik-line" data-time="97">If every second it makes me weaker</p>
+            <p class="lirik-line" data-time="101">You can save me from the man I've become</p>
+
+            <p class="lirik-line" data-time="112">Looking back on the things I'done</p>
+            <p class="lirik-line" data-time="116">I was trying to be someone (trying to be)</p>
+            <p class="lirik-line" data-time="121">I played my part, kept you in the dark (in the dark)</p>
+            <p class="lirik-line" data-time="127">Now let me show you the shape of my heart</p>
+
+            <p class="lirik-line" data-time="134">I'm here with my confession</p>
+            <p class="lirik-line" data-time="139">Got nothing to hide no more</p>
+            <p class="lirik-line" data-time="142">I don't know where to start</p>
+            <p class="lirik-line" data-time="147">But to show you the shape of my heart</p>
+
+            <p class="lirik-line" data-time="157">I'm lookin' back on things I'done</p>
+            <p class="lirik-line" data-time="163">I never wanna play the same old part</p>
+            <p class="lirik-line" data-time="168">I'll keep you in the dark (keep you in the dark)</p>
+            <p class="lirik-line" data-time="172">Now let me show you the shape of my heart</p>
+
+            <p class="lirik-line" data-time="177">Looking back on the things I'done</p>
+            <p class="lirik-line" data-time="181">I was trying to be someone (trying to be someone)</p>
+            <p class="lirik-line" data-time="188">I played my part, kept you in the dark</p>
+            <p class="lirik-line" data-time="192">Now let me show you the shape of my heart</p>
+
+            <p class="lirik-line" data-time="198">Looking back on the things I'done</p>
+            <p class="lirik-line" data-time="201">I was trying to be someone</p>
+            <p class="lirik-line" data-time="206">I played my part, kept you in the dark</p>
+            <p class="lirik-line" data-time="211">Now let me show you the shape of</p>
+            <p class="lirik-line" data-time="218">Show you the shape of my heart</p>
+        </div>
+
+        <button onclick="closeLirik()" class="close">Tutup</button>
+    </div>
+</div>
 
 <!-- HEADER -->
 <div class="header">
@@ -446,7 +411,6 @@ footer {
 
 <!-- GALERI -->
 <div class="gallery">
-    <!-- FOTO 1 -->
     <div class="card" onclick="showMemory('Momen Pertama', 'IMG-20240925-WA0071.jpg', 'ini adalah foto pertama kali di smk pgri 2 cibinong dengan teman kelas 10-tkj 5 damar.wikend.fahri.dan alfian.')">
         <img src="IMG-20240925-WA0071.jpg">
         <div class="card-info">
@@ -455,7 +419,6 @@ footer {
         </div>
     </div>
 
-    <!-- FOTO 2 -->
     <div class="card" onclick="showMemory('Bukber dikelas 11', 'IMG-20260228-WA0181.jpg', 'Foto dimana kelas kita berkumpul dibulan Puasa untuk berbuka bersama.disitu kita mengobrol bersama ngomongin tempat pkl masing masing dan lainnya.')">
         <img src="IMG-20260228-WA0181.jpg">
         <div class="card-info">
@@ -464,7 +427,6 @@ footer {
         </div>
     </div>
 
-    <!-- FOTO 3 -->
     <div class="card" onclick="showMemory('Momen Bersama', 'IMG-20260603-WA0010.jpg', 'foto bersama terakhir dikelas 11 setelah tes pelajaran jasmani .lopyu.')">
         <img src="IMG-20260603-WA0010.jpg">
         <div class="card-info">
@@ -473,7 +435,6 @@ footer {
         </div>
     </div>
 
-    <!-- FOTO 4 -->
     <div class="card" onclick="showMemory('Cerita Kita', 'IMG-20250829-WA0067.jpg', 'Foto Bersama ex wali kelas dikelas 11 tkj 6.')">
         <img src="IMG-20250829-WA0067.jpg">
         <div class="card-info">
@@ -482,7 +443,6 @@ footer {
         </div>
     </div>
     
-        <!-- FOTO 5 -->
     <div class="card" onclick="showMemory('Touring bareng', 'IMG-20250910-WA0029.jpg', 'Foto Jalan jalan ke taman mini indonesia Sekelas dikelas 11 bersama walikelas.')">
         <img src="IMG-20250910-WA0029.jpg">
         <div class="card-info">
@@ -492,14 +452,13 @@ footer {
     </div>
 </div>
 
-<!-- SECTION PILIH ADMIN DENGAN KOTAK LUAR -->
+<!-- SECTION PILIH ADMIN -->
 <div class="admin-section">
     <div class="section-tag">KONTAK SEKARANG</div>
     <h2 class="admin-title">Pilih Admin</h2>
     <p class="admin-subtitle">Pilih admin terpercaya untuk kebutuhan layanan digital (jasa buat web. dll).</p>
 
     <div class="admin-grid">
-        <!-- ADMIN 1 -->
         <div class="admin-card">
             <div class="admin-profile">
                 <div class="avatar">A</div>
@@ -514,7 +473,6 @@ footer {
             </a>
         </div>
 
-        <!-- ADMIN 2 -->
         <div class="admin-card">
             <div class="admin-profile">
                 <div class="avatar">D</div>
@@ -529,7 +487,6 @@ footer {
             </a>
         </div>
 
-        <!-- ADMIN 3 -->
         <div class="admin-card">
             <div class="admin-profile">
                 <div class="avatar">F</div>
@@ -544,14 +501,13 @@ footer {
             </a>
         </div>
 
-        <!-- ADMIN 4 -->
         <div class="admin-card">
             <div class="admin-profile">
                 <div class="avatar">W</div>
                 <div class="admin-details">
                     <h3>Staff Dhevan</h3>
                     <div class="role">Engginer GOCIR</div>
-                    <span class="status-tag">Tersedia</span>
+                    <span class="status-tag">tersedia</span>
                 </div>
             </div>
             <a href="https://www.instagram.com/the.vans._?igsh=MW5heGt6bzZnaGprNw==" target="_blank" class="btn-chat">
@@ -561,7 +517,7 @@ footer {
     </div>
 </div>
 
-<!-- POPUP -->
+<!-- POPUP FOTO -->
 <div class="popup" id="popup">
     <div class="popup-box">
         <img id="memoryImage">
@@ -576,6 +532,14 @@ footer {
 </footer>
 
 <script>
+function openLirik() {
+    document.getElementById("popupLirik").style.display = "flex";
+}
+
+function closeLirik() {
+    document.getElementById("popupLirik").style.display = "none";
+}
+
 function showMemory(title, image, text) {
     document.getElementById("memoryTitle").innerText = title;
     document.getElementById("memoryImage").src = image;
@@ -587,12 +551,27 @@ function closeMemory() {
     document.getElementById("popup").style.display = "none";
 }
 
-document.getElementById("popup").addEventListener("click", function(e) {
-    if (e.target === this) {
-        closeMemory();
-    }
-});
+var audio = document.getElementById("myAudio");
+var lines = document.querySelectorAll(".lirik-line");
+
+if (audio) {
+    audio.addEventListener("timeupdate", function() {
+        var currentTime = audio.currentTime;
+        lines.forEach(function(line, index) {
+            var time = parseFloat(line.getAttribute("data-time"));
+            var nextTime = lines[index + 1] ? parseFloat(lines[index + 1].getAttribute("data-time")) : Infinity;
+            
+            if (currentTime >= time && currentTime < nextTime) {
+                line.classList.add("active");
+                line.scrollIntoView({ behavior: "smooth", block: "center" });
+            } else {
+                line.classList.remove("active");
+            }
+        });
+    });
+}
 </script>
 
 </body>
-</html>
+                </html>
+    
